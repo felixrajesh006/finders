@@ -16,6 +16,12 @@
                           <label for="exampleInputPassword1">Image</label>
                           <input type="text" ng-model="formdata.img" class="form-control" id="exampleInputPassword1" placeholder="Upload Image">
                         </div>
+                          <div class="form-group">
+                          <label for="exampleInputPassword1">Sorting</label>
+                          <input type="text" ng-model="formdata.sort" class="form-control">
+                        </div>
+                          
+                          
                         <button type="button" ng-if="formdata.id <= 0" ng-click="addcatlist('add')" class="btn btn-success mr-2">Submit</button>
                         <button type="button" ng-if="formdata.id" ng-click="addcatlist('edit')" class="btn btn-success mr-2">Update</button>
                         <button class="btn btn-light">Cancel</button>

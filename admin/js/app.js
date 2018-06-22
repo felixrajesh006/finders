@@ -4,7 +4,7 @@ var app = angular.module("App", [
     'ngRoute'
 ])
 .run(function($rootScope) {
-    $rootScope.api_root_url = 'http://localhost/project/ext/core/public';
+    $rootScope.api_root_url = 'http://localhost/finders/core/public';
 });
 
 app.config(['$qProvider', function ($qProvider) {

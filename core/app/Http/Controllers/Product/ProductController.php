@@ -51,10 +51,10 @@ class ProductController extends Controller {
                  if (isset($postdata['id']) && !empty($postdata['id'])) {
                     $id = $postdata['id'];
                     $condition = array("id"=>$id);
-                    $categorydetails = CustomDbModel::selectquery('category_prod', array('id', 'cat_name', 'img', 'status'), $condition,true);
+                    $categorydetails = CustomDbModel::selectquery('category_prod', array('id', 'cat_name', 'img', 'sort','status'), $condition,true);
                     
                  }else{
-                     $categorydetails = CustomDbModel::selectquery('category_prod', array('id', 'cat_name', 'img', 'status'), array());
+                     $categorydetails = CustomDbModel::selectquery('category_prod', array('id', 'cat_name', 'img','sort','status'), array());
                  }
                 
                 
