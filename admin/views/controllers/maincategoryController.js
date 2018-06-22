@@ -50,10 +50,22 @@ app.controller("maincategoryCtrl", function ($scope, services, $rootScope, $http
         $scope.formdata = {};
         $scope.getcatlist('list', '');
     }
-
-    $scope.getcatlist = function () {
-        $scope.formdata.action = 'add';
-        var result = services.commonService('/product/getcategorymaster', $scope.formdata)
+    
+     $scope.statusupdate = function (status,id) {
+        $scope.formdata.action = 'statusupdate';
+        $scope.formdata.status = status;
+        $scope.formdata.id = id;
+        
+        var data = $scope.formdata
+        var apiurl = $rootScope.api_root_url + '/product/getcategorymaster';
+        $http({
+            method: "POST",
+            url: apiurl,
+            data: data
+        }).then(function mySuccess(response) {
+            $scope.formdata = {};
+            $scope.getcatlist('list', '');
+        });
     }
 
     $scope.getcatlist = function (action, id) {
