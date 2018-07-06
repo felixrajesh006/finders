@@ -43,19 +43,66 @@ app.controller("maincategoryCtrl", function ($scope, services, $rootScope, $http
     $scope.formdata = {};
     $scope.categorylist = {};
     var result = {};
+    $scope.formdata.id = 0;
+    $scope.asset_location_bulkupload = {};
+
+  $scope.setLocationAssetUpload = function (upfile) {
+      
+      debugger;
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $scope.asset_location_bulkupload = {};
+            $scope.asset_location_bulkupload.uploadurl = e.target.result;
+            $scope.asset_location_bulkupload.uploadfiletype = $rootScope.upfile.file.type;
+            $scope.asset_location_bulkupload.uploadfilename = $rootScope.upfile.file.name;
+            debugger;
+            $scope.$apply();
+        };
+        reader.readAsDataURL($rootScope.upfile.file);
+    };
 
     $scope.addcatlist = function (action) {
+        
+        
+        console.log($scope.asset_location_bulkupload);
+        debugger;
+        return 1;
+        
+        var file = $scope.myFile;
+        $scope.formdata.file_name = file.name;
         $scope.formdata.action = action;
-        services.commonService('/product/getcategorymaster', $scope.formdata);
-        $scope.formdata = {};
-        $scope.getcatlist('list', '');
+
+        var fileFormData = new FormData();
+        fileFormData.append('file', file);
+        fileFormData.append('action', action);
+        fileFormData.append('cat_name', $scope.formdata.cat_name);
+        fileFormData.append('sort', $scope.formdata.sort);
+        fileFormData.append('file_name', $scope.formdata.file_name);
+
+        $http.post($rootScope.api_root_url + '/product/getcategorymaster', fileFormData, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+
+        }).then(function (response) {
+            console.log(response);
+            $scope.formdata = {};
+            $scope.getcatlist('list', '');
+
+        });
+
+
+
+
+//        services.commonService('/product/getcategorymaster', $scope.formdata);
+//        $scope.formdata = {};
+//        $scope.getcatlist('list', '');
     }
-    
-     $scope.statusupdate = function (status,id) {
+
+    $scope.statusupdate = function (status, id) {
         $scope.formdata.action = 'statusupdate';
         $scope.formdata.status = status;
         $scope.formdata.id = id;
-        
+
         var data = $scope.formdata
         var apiurl = $rootScope.api_root_url + '/product/getcategorymaster';
         $http({

@@ -4,15 +4,15 @@
   "description": "",
   "main": "index.html",
   "dependencies": {
-    "bootstrap": "4.0.0",
-    "chart.js": "2.7.1",
-    "flag-icon-css": "2.9.0",
-    "font-awesome": "4.7.0",
-    "gulp-sourcemaps": "^2.6.3",
-    "jquery": "3.2.1",
-    "mdi": "2.1.19",
-    "popper.js": "1.12.9",
-    "simple-line-icons": "2.4.1"
+    "bootstrap": "^4.0.0",
+    "chart.js": "^2.7.1",
+    "flag-icon-css": "^2.9.0",
+    "font-awesome": "^4.7.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "jquery": "^3.2.1",
+    "mdi": "^2.1.19",
+    "popper.js": "^1.12.9",
+    "simple-line-icons": "^2.4.1"
   },
   "devDependencies": {
     "browser-sync": "^2.16.0",
